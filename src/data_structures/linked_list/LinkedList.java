@@ -228,7 +228,7 @@ public class LinkedList<T>
 
             while (current != tail)
             {
-                str += current + ", ";
+                str += current + " | ";
                 current = current.getNext();
             }
 

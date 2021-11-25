@@ -50,7 +50,7 @@ public class BinarySearchTree<T extends Comparable<? super T>>
 
         public String inOrderTraverse(TreeNode<T> node)
         {
-            String str = "";
+            String str = "[";
             if(node != null)
             {
                 str += inOrderTraverse(node.getLeftChild()) + " ";
@@ -58,7 +58,7 @@ public class BinarySearchTree<T extends Comparable<? super T>>
                 str += inOrderTraverse(node.getRightChild());
             }
 
-            return str;
+            return str + "]";
         }
 
 
