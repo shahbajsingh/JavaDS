@@ -1,16 +1,16 @@
-package data_structures.binary_tree;
+package data_structures.binary_search_tree;
 
-public class BinaryTree<T extends Comparable<? super T>>
+public class BinarySearchTree<T extends Comparable<? super T>>
     {
 
         private TreeNode<T> root;
 
-        public BinaryTree()
+        public BinarySearchTree()
         {
             root = null;
         }
 
-        public BinaryTree(T value)
+        public BinarySearchTree(T value)
         {
             root = new TreeNode<T>(value);
         }

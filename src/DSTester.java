@@ -1,16 +1,20 @@
-import data_structures.binary_tree.BinaryTree;
+import data_structures.binary_search_tree.BinarySearchTree;
 
 public class DSTester
     {
 
         public static void main(String[] args)
         {
-            BinaryTree bt = new BinaryTree();
+            BinarySearchTree bt = new BinarySearchTree();
 
-            for(int i = 20; i > 0; i--)
-            {
-                bt.addTreeNode(i);
-            }
+            bt.addTreeNode(10);
+            bt.addTreeNode(11);
+            bt.addTreeNode(109);
+            bt.addTreeNode(102);
+            bt.addTreeNode(29);
+            bt.addTreeNode(33);
+            bt.addTreeNode(24);
+            bt.addTreeNode(66);
 
             System.out.println(bt.inOrderTraverse(bt.getRoot()));
 

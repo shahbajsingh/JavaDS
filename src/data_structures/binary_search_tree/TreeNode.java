@@ -1,4 +1,4 @@
-package data_structures.binary_tree;
+package data_structures.binary_search_tree;
 
 public class TreeNode<T extends Comparable<? super T>> implements Comparable<TreeNode<T>>
     {
