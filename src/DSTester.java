@@ -7,22 +7,11 @@ public class DSTester
         public static void main(String[] args)
         {
 
-            BinarySearchTree bst = new BinarySearchTree(10);
-            bst.addTreeNode(50);
-            bst.addTreeNode(20);
-            bst.addTreeNode(77);
-            bst.addTreeNode(292);
-            bst.addTreeNode(29);
-            bst.addTreeNode(2992);
-            bst.addTreeNode(83);
-            bst.addTreeNode(292);
-            bst.addTreeNode(-292);
-            bst.addTreeNode(-280);
-            bst.addTreeNode(0);
+            ArrayList<Integer> arr = new ArrayList<>();
+            for(int i = 0; i < 100; i++)
+                arr.add((int) (Math.random() * 100));
 
-            System.out.println(bst.inOrderTraverse(bst.getRoot()));
-            System.out.println(bst.getRoot().getLeftChild());
-            System.out.println(bst.getRoot().getRightChild());
+            System.out.println(arr);
 
         }
 

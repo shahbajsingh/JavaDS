@@ -27,19 +27,19 @@ public class ArrayList<T>
             elementCount++;
         }
 
-        public void grow()
+        public void grow()  // TO-DO: Deep copy
         {
             capacity *= 2;
             T[] newArr = (T[]) new Object[elementCount];
             System.arraycopy(arr, 0, newArr, 0, elementCount);
 
-            arr = newArr;
+            this.arr = newArr;  // Does not change pointer
         }
 
 
         public void remove(T val) // TO-DO: Remove nulls from array
         {
-            int[] indices = indexOf(val);
+            int[] indices = indicesOf(val);
 
             for(int i = indices[0]; i < indices.length; i++)
             {
@@ -63,11 +63,16 @@ public class ArrayList<T>
             return indices;
         }
 
-        public int[] indexOf(T val)
+        public int indexOf(T val)
         {
-            if(instancesOf(val) >= 0)
+            if(instancesOf(val) > 1)
             {
-                return indicesOf(val);
+                System.out.print("\nmultiple indices found –– \nuse indicesOf() method to return array of indices\n");
+                return indicesOf(val)[0];
+            }
+            else if(instancesOf(val) == 1)
+            {
+                return indicesOf(val)[0];
             }
             else
             {
