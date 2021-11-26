@@ -30,28 +30,49 @@ public class ArrayList<T>
         public void grow()
         {
             capacity *= 2;
-            T[] newArr = (T[]) new Object[capacity];
+            T[] newArr = (T[]) new Object[elementCount];
             System.arraycopy(arr, 0, newArr, 0, elementCount);
 
             arr = newArr;
         }
 
 
-        public void remove(T val) // TO-DO: Add remove method
+        public void remove(T val) // TO-DO: Remove nulls from array
         {
+            int[] indices = indexOf(val);
+
+            for(int i = indices[0]; i < indices.length; i++)
+            {
+                arr[indices[i]] = null;
+            }
 
         }
 
 
-        // TO-DO: Create and return array of indices where value is found
-        public int indexOf(T val)
+        public int[] indicesOf(T val)
         {
-            for(int i = 0; i < elementCount; i++)
+            int[] indices = new int[capacity];
+            for(int i = 0, j = 0; i < elementCount; i++)
             {
                 if(arr[i].equals(val))
-                    return i;
+                {
+                    indices[j] = i;
+                    j++;
+                }
             }
-            throw new ElementNotFoundException();
+            return indices;
+        }
+
+        public int[] indexOf(T val)
+        {
+            if(instancesOf(val) >= 0)
+            {
+                return indicesOf(val);
+            }
+            else
+            {
+                throw new ElementNotFoundException();
+            }
         }
 
         public int instancesOf(T val)
