@@ -27,23 +27,24 @@ public class ArrayList<T>
             elementCount++;
         }
 
-        public void grow()  // TO-DO: Deep copy
+        public void grow()
         {
             capacity *= 2;
-            T[] newArr = (T[]) new Object[elementCount];
+            T[] newArr = (T[]) new Object[capacity];
             System.arraycopy(arr, 0, newArr, 0, elementCount);
 
-            this.arr = newArr;  // Does not change pointer
+            this.arr = newArr;
         }
 
 
         public void remove(T val) // TO-DO: Remove nulls from array
         {
+            removeNulls();
             int[] indices = indicesOf(val);
-
-            for(int i = indices[0]; i < indices.length; i++)
+            for(int i = 0; i < indices.length; i++)
             {
                 arr[indices[i]] = null;
+                elementCount--;
             }
 
         }
@@ -51,32 +52,58 @@ public class ArrayList<T>
 
         public int[] indicesOf(T val)
         {
-            int[] indices = new int[capacity];
-            for(int i = 0, j = 0; i < elementCount; i++)
+            try
             {
-                if(arr[i].equals(val))
+                removeNulls();
+                if (instancesOf(val) >= 1)
                 {
-                    indices[j] = i;
-                    j++;
+                    int[] indices = new int[instancesOf(val)];
+                    for (int i = 0, j = 0; i < arr.length; i++)
+                    {
+                        if ((j < indices.length) && (arr[i].equals(val)))
+                        {
+                            indices[j] = i;
+                            j++;
+                        }
+                    }
+                    return indices;
+                }
+                else
+                {
+                    throw new ElementNotFoundException();
                 }
             }
-            return indices;
+            catch (ElementNotFoundException e)
+            {
+                e.getMessage();
+                return null;
+            }
         }
 
         public int indexOf(T val)
         {
-            if(instancesOf(val) > 1)
+            try
             {
-                System.out.print("\nmultiple indices found –– \nuse indicesOf() method to return array of indices\n");
-                return indicesOf(val)[0];
+                removeNulls();
+                if (instancesOf(val) > 1)
+                {
+                    System.out.print("\nmultiple indices found –– " +
+                                     "\nuse indicesOf() method to return array of indices\n");
+                    return indicesOf(val)[0];
+                }
+                else if (instancesOf(val) == 1)
+                {
+                    return indicesOf(val)[0];
+                }
+                else
+                {
+                    throw new ElementNotFoundException();
+                }
             }
-            else if(instancesOf(val) == 1)
+            catch (ElementNotFoundException e)
             {
-                return indicesOf(val)[0];
-            }
-            else
-            {
-                throw new ElementNotFoundException();
+                e.getMessage();
+                return -1;
             }
         }
 
@@ -85,16 +112,39 @@ public class ArrayList<T>
             int counter = 0;
             for(int i = 0; i < elementCount; i++)
             {
-                if(arr[i].equals(val))
+                if(arr[i].equals(val) && !arr[i].equals(null))
                     counter++;
             }
             return counter;
         }
 
+        private void removeNulls()
+        {
+            T[] newArr = (T[]) new Object[elementCount];
+            for(int i = 0, j = 0; i < arr.length; i++)
+            {
+                if(arr[i] != null)
+                    newArr[j++] = arr[i];
+            }
+            arr = newArr;
+        }
+
+        private boolean containsNulls()
+        {
+             for(int i = 0; i < arr.length; i++)
+             {
+                 if(arr[i] == null)
+                     return true;
+             }
+             return false;
+        }
+
+
 
         @Override
         public String toString()
         {
+            removeNulls();
             String str = "[";
             for(int i = 0; i < elementCount - 1; i++)
                 str += arr[i] + " | ";
