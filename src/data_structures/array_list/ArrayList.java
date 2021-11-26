@@ -39,14 +39,13 @@ public class ArrayList<T>
 
         public void remove(T val)
         {
-            removeNulls();
             int[] indices = indicesOf(val);
             for(int i = 0; i < indices.length; i++)
             {
                 arr[indices[i]] = null;
                 elementCount--;
             }
-
+            removeNulls();
         }
 
 
