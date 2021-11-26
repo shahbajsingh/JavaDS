@@ -36,6 +36,15 @@ public class ArrayList<T>
             arr = newArr;
         }
 
+        public void remove(T val)
+        {
+            int index = indexOf(val);
+            for(int i = index; i < elementCount; i++)
+            {
+                arr[i] = arr[i + 1];
+            }
+        }
+
         public int indexOf(T val)
         {
             for(int i = 0; i < elementCount; i++)
