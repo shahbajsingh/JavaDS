@@ -36,15 +36,14 @@ public class ArrayList<T>
             arr = newArr;
         }
 
-        public void remove(T val)
+
+        public void remove(T val) // TO-DO: Add remove method
         {
-            int index = indexOf(val);
-            for(int i = index; i < elementCount; i++)
-            {
-                arr[i] = arr[i + 1];
-            }
+
         }
 
+
+        // TO-DO: Create and return array of indices where value is found
         public int indexOf(T val)
         {
             for(int i = 0; i < elementCount; i++)
@@ -53,6 +52,17 @@ public class ArrayList<T>
                     return i;
             }
             throw new ElementNotFoundException();
+        }
+
+        public int instancesOf(T val)
+        {
+            int counter = 0;
+            for(int i = 0; i < elementCount; i++)
+            {
+                if(arr[i].equals(val))
+                    counter++;
+            }
+            return counter;
         }
 
 
