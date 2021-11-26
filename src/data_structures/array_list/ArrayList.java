@@ -37,7 +37,7 @@ public class ArrayList<T>
         }
 
 
-        public void remove(T val) // TO-DO: Remove nulls from array
+        public void remove(T val)
         {
             removeNulls();
             int[] indices = indicesOf(val);
@@ -140,7 +140,7 @@ public class ArrayList<T>
         }
 
 
-
+        
         @Override
         public String toString()
         {
