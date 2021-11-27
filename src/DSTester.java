@@ -7,30 +7,17 @@ public class DSTester
         public static void main(String[] args)
         {
 
-            ArrayList<Integer> arr = new ArrayList<>();
-            arr.add(9);
-            arr.add(5);
-            arr.add(8);
-            arr.add(3);
-            arr.add(1);
-            arr.add(4);
-            arr.add(4);
-            arr.add(22);
-            arr.add(22);
-            arr.add(4);
-            arr.add(2);
-            arr.add(1);
+           BinarySearchTree<Integer> b = new BinarySearchTree<>();
+            b.addTreeNode(4);
+            b.addTreeNode(2);
+            b.addTreeNode(1);
+            b.addTreeNode(6);
+            b.addTreeNode(9);
+            b.addTreeNode(11);
+            b.addTreeNode(55);
+            b.addTreeNode(94);
 
-            System.out.println(arr);
-            System.out.println("Instances of 4: " + arr.instancesOf(4));
-            System.out.println("Indices of 4: ");
-            for(int i = 0; i < arr.indicesOf(4).length; i++)
-                System.out.print(arr.indicesOf(4)[i] + " ");
-            System.out.println();
-
-            arr.remove(4);
-
-            System.out.println(arr);
+            System.out.println(b.getRoot());
 
         }
 

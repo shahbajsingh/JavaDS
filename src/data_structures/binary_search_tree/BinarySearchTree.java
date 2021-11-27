@@ -43,10 +43,23 @@ public class BinarySearchTree<T extends Comparable<? super T>>
             return current;
         }
 
-        public void addTreeNode(T value)
+        public void addTreeNode(T val)
         {
-            root = addTreeNodeRecursive(root, value);
+            root = addTreeNodeRecursive(root, val);
         }
+
+        public void add(T val)
+        {
+            addTreeNode(val);
+        }
+
+
+        public void removeTreeNode(T value)
+        {
+
+        }
+
+
 
         public String inOrderTraverse(TreeNode<T> node)
         {
@@ -58,7 +71,33 @@ public class BinarySearchTree<T extends Comparable<? super T>>
                 str += inOrderTraverse(node.getRightChild());
             }
 
-            return str + "";
+            return str;
+        }
+
+        public String preOrderTraverse(TreeNode<T> node)
+        {
+            String str = "";
+            if(node != null)
+            {
+                str += node.getData() + " | ";
+                str += preOrderTraverse(node.getLeftChild());
+                str += preOrderTraverse(node.getRightChild());
+            }
+
+            return str;
+        }
+
+        public String postOrderTraverse(TreeNode<T> node)
+        {
+            String str = "";
+            if(node != null)
+            {
+                str += postOrderTraverse(node.getLeftChild());
+                str += postOrderTraverse(node.getRightChild());
+                str += node.getData() + " | ";
+            }
+
+            return str;
         }
 
 
