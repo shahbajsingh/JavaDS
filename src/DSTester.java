@@ -17,7 +17,9 @@ public class DSTester
             b.addTreeNode(55);
             b.addTreeNode(94);
 
-            System.out.println(b.getRoot());
+            System.out.println(b.inOrderTraverse(b.getRoot()));
+            System.out.println(b.preOrderTraverse(b.getRoot()));
+            System.out.println(b.postOrderTraverse(b.getRoot()));
 
         }
 
