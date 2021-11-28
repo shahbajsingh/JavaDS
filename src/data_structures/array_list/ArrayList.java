@@ -1,6 +1,6 @@
 package data_structures.array_list;
 
-public class ArrayList<T>
+public class ArrayList<T> implements ArrayListInterface<T>
     {
         private T[] arr;
         private int elementCount;
@@ -18,6 +18,7 @@ public class ArrayList<T>
             arr = (T[]) new Object [capacity];
         }
 
+        @Override
         public void add(T val)
         {
             if(elementCount == capacity)
@@ -27,6 +28,7 @@ public class ArrayList<T>
             elementCount++;
         }
 
+        @Override
         public void grow()
         {
             capacity *= 2;
@@ -36,7 +38,7 @@ public class ArrayList<T>
             this.arr = newArr;
         }
 
-
+        @Override
         public void remove(T val)
         {
             int[] indices = indicesOf(val);
@@ -48,7 +50,7 @@ public class ArrayList<T>
             removeNulls();
         }
 
-
+        @Override
         public int[] indicesOf(T val)
         {
             try
@@ -79,6 +81,7 @@ public class ArrayList<T>
             }
         }
 
+        @Override
         public int indexOf(T val)
         {
             try
@@ -106,6 +109,7 @@ public class ArrayList<T>
             }
         }
 
+        @Override
         public int instancesOf(T val)
         {
             int counter = 0;
@@ -115,6 +119,18 @@ public class ArrayList<T>
                     counter++;
             }
             return counter;
+        }
+
+        @Override
+        public int getSize()
+        {
+            return elementCount;
+        }
+
+        @Override
+        public boolean isEmpty()
+        {
+            return elementCount == 0;
         }
 
         private void removeNulls()

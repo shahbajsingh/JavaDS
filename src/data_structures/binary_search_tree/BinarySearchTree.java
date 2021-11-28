@@ -29,7 +29,7 @@ public class BinarySearchTree<T extends Comparable<? super T>>
                 return new TreeNode<>(value);
             }
 
-            if (newTreeNode.compareTo(current) < 0)
+            if (newTreeNode.compareTo(current) <= 0)
             {
                 current.setLeftChild(addTreeNodeRecursive(current.getLeftChild(), value));
             } else if (newTreeNode.compareTo(current) > 0)

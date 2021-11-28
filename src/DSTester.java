@@ -1,5 +1,6 @@
 import data_structures.array_list.ArrayList;
 import data_structures.binary_search_tree.BinarySearchTree;
+import data_structures.linked_list.LinkedList;
 
 public class DSTester
     {
@@ -7,19 +8,20 @@ public class DSTester
         public static void main(String[] args)
         {
 
-           BinarySearchTree<Integer> b = new BinarySearchTree<>();
-            b.addTreeNode(4);
-            b.addTreeNode(2);
-            b.addTreeNode(1);
-            b.addTreeNode(6);
-            b.addTreeNode(9);
-            b.addTreeNode(11);
-            b.addTreeNode(55);
-            b.addTreeNode(94);
+            LinkedList l = new LinkedList();
 
-            System.out.println(b.inOrderTraverse(b.getRoot()));
-            System.out.println(b.preOrderTraverse(b.getRoot()));
-            System.out.println(b.postOrderTraverse(b.getRoot()));
+
+            l.addNode(2);
+            l.addNodeFirst(5);
+            l.addNode(1);
+            l.addNode(3);
+            l.addNode(4);
+
+            l.circularize();
+            System.out.println(l.getTail().getNext());
+
+            l.nullifyEnds();
+            System.out.println(l.getTail().getNext());
 
         }
 

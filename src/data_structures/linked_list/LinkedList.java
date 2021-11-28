@@ -7,22 +7,22 @@ package data_structures.linked_list;
  * make the list circular at its ends, remove nodes of specified values, get the index of nodes with specified
  * values, get the value of nodes at specified indexes, and get the size of the list
  */
-public class LinkedList<T>
+public class LinkedList<T> implements LinkedListInterface<T>
     {
 
         private ListNode<T> head;
         private ListNode<T> tail;
         private boolean circular;
 
-
-        public void addListNodeFirst(T obj)     // Add new node with specified data to beginning of list
+        @Override
+        public void addNodeFirst(T obj)     // Add new node with specified data to beginning of list
         {
             ListNode<T> newListNode = new ListNode<>(obj);
 
             if (this.isEmpty())
             {
                 head = tail = newListNode;
-                this.nullEnds();
+                this.nullifyEnds();
             }
             else if (circular == false)
             {
@@ -39,14 +39,15 @@ public class LinkedList<T>
             }
         }
 
-        public void addListNodeLast(T obj)      // Add new node with specified data to end of list
+        @Override
+        public void addNodeLast(T obj)      // Add new node with specified data to end of list
         {
             ListNode<T> newListNode = new ListNode<>(obj);
 
             if (this.isEmpty())
             {
                 head = tail = newListNode;
-                this.nullEnds();
+                this.nullifyEnds();
             }
             else if (circular == false)
             {
@@ -64,13 +65,14 @@ public class LinkedList<T>
 
         }
 
-        public void addListNode(T obj)      // Default add method calls addListNodeLast, adds data to end of list
+        public void addNode(T obj)      // Default add method calls addNodeLast, adds data to end of list
         {
-            addListNodeLast(obj);
+            addNodeLast(obj);
         }
 
+        @Override
         // Traverses list and returns true if removal of node with corresponding data was possible
-        public boolean removeListNode(T val)
+        public boolean removeNode(T val)
         {
             ListNode<T> current = head;
 
@@ -111,6 +113,7 @@ public class LinkedList<T>
             return false;
         }
 
+        @Override
         public int getIndexOf(T val)
         {
             ListNode<T> current = head;
@@ -141,6 +144,7 @@ public class LinkedList<T>
             return -1;
         }
 
+        @Override
         public T getElementAtIndex(int index)
         {
             if (index > getSize())
@@ -157,6 +161,7 @@ public class LinkedList<T>
             }
         }
 
+        @Override
         public int getSize()
         {
             if(this.isEmpty())
@@ -172,7 +177,7 @@ public class LinkedList<T>
             return counter + 1;
         }
 
-
+        @Override
         public ListNode<T> getHead()        // Access head node
         {
             return head;
@@ -192,12 +197,12 @@ public class LinkedList<T>
 
         public void decircularize()     // Unlinks ends by nulling them and decircularizes the linked list
         {
-            nullEnds();
+            nullifyEnds();
             circular = false;
         }
 
 
-        public void nullEnds()      // Set ends of list (back of head node and front of tail node) to null
+        public void nullifyEnds()      // Set ends of list (back of head node and front of tail node) to null
         {
             head.setPrevious(null);
             tail.setNext(null);
@@ -214,6 +219,7 @@ public class LinkedList<T>
             return (circular == true);
         }
 
+        @Override
         public boolean isEmpty()        // Returns true if list is empty
         {
             return (head == null);
