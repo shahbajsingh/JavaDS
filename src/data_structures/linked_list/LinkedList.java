@@ -14,6 +14,12 @@ public class LinkedList<T> implements LinkedListInterface<T>
         private ListNode<T> tail;
         private boolean circular;
 
+        public LinkedList()
+        {
+            head = tail = null;
+            circular = false;
+        }
+
         @Override
         public void addNodeFirst(T obj)     // Add new node with specified data to beginning of list
         {
@@ -76,11 +82,17 @@ public class LinkedList<T> implements LinkedListInterface<T>
         {
             ListNode<T> current = head;
 
+
             if(!this.isCircular())
             {
                 while (current != null)
                 {
-                    if (current.getData().equals(val))
+                    if(val.equals(getHead().getData()))     // Head case
+                    {
+                        head = current.getNext();
+                        current.getNext().setPrevious(null);
+                    }
+                    else if (current.getData().equals(val))
                     {
                         current.getPrevious().setNext(current.getNext());
                         current.getNext().setPrevious(current.getPrevious());

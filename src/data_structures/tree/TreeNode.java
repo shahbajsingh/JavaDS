@@ -1,4 +1,4 @@
-package data_structures.binary_search_tree;
+package data_structures.tree;
 
 public class TreeNode<T extends Comparable<? super T>> implements Comparable<TreeNode<T>>
     {
@@ -13,6 +13,7 @@ public class TreeNode<T extends Comparable<? super T>> implements Comparable<Tre
             left = null;
             right = null;
         }
+        
 
 
         // ACCESSOR METHODS

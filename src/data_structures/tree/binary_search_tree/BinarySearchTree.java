@@ -1,4 +1,6 @@
-package data_structures.binary_search_tree;
+package data_structures.tree.binary_search_tree;
+
+import data_structures.tree.TreeNode;
 
 public class BinarySearchTree<T extends Comparable<? super T>>
     {

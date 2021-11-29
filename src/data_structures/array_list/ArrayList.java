@@ -50,6 +50,11 @@ public class ArrayList<T> implements ArrayListInterface<T>
             removeNulls();
         }
 
+        public T elementAtIndex(int index)
+        {
+            return arr[index];
+        }
+
         @Override
         public int[] indicesOf(T val)
         {

@@ -1,5 +1,7 @@
 package data_structures.linked_list;
 
+import data_structures.Node;
+
 public class ListNode<T>
     {
 
@@ -9,8 +11,6 @@ public class ListNode<T>
         private T data;
         private ListNode previousLink;
         private ListNode nextLink;
-
-
 
 
         public ListNode(T data)
