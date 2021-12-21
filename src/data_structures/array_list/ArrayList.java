@@ -42,11 +42,18 @@ public class ArrayList<T> implements ArrayListInterface<T>
         public void remove(T val)
         {
             int[] indices = indicesOf(val);
-            for(int i = 0; i < indices.length; i++)
-            {
-                arr[indices[i]] = null;
+            for (int index : indices) {
+                arr[index] = null;
                 elementCount--;
             }
+            removeNulls();
+        }
+
+        // Allows ListStack to pop without removing element at all indices
+        public void removeLast()
+        {
+            arr[elementCount - 1] = null;
+            elementCount--;
             removeNulls();
         }
 
@@ -81,7 +88,7 @@ public class ArrayList<T> implements ArrayListInterface<T>
             }
             catch (ElementNotFoundException e)
             {
-                e.getMessage();
+                System.out.println(e.getMessage());
                 return null;
             }
         }
@@ -109,7 +116,7 @@ public class ArrayList<T> implements ArrayListInterface<T>
             }
             catch (ElementNotFoundException e)
             {
-                e.getMessage();
+                System.out.println(e.getMessage());
                 return -1;
             }
         }
@@ -151,11 +158,10 @@ public class ArrayList<T> implements ArrayListInterface<T>
 
         private boolean containsNulls()
         {
-             for(int i = 0; i < arr.length; i++)
-             {
-                 if(arr[i] == null)
-                     return true;
-             }
+            for (T t : arr) {
+                if (t == null)
+                    return true;
+            }
              return false;
         }
 
@@ -165,10 +171,10 @@ public class ArrayList<T> implements ArrayListInterface<T>
         public String toString()
         {
             removeNulls();
-            String str = "[";
+            StringBuilder str = new StringBuilder("[");
             for(int i = 0; i < elementCount - 1; i++)
-                str += arr[i] + " | ";
-            return str + arr[elementCount - 1] + "]";
+                str.append(arr[i]).append(" | ");
+            return str.toString() + arr[elementCount - 1] + "]";
         }
 
 
